@@ -305,11 +305,32 @@
 <hr />
 <h1 id="download-libtorch-c-from-pytorchorg">Download LibTorch C++ from <a href="https://pytorch.org/get-started/locally/">pytorch.org</a></h1>
 <ul>
-<li><figure>
+<li>Choose the CUDA toolkit version corresponding to your CUDA toolkit environment.
+<figure>
   <img src="https://cognex-gs.github.io/assets/img/posts/setting-up-par-runtime-env/01.png" width="100%" />
   <figcaption>Downloading LibTorch C++</figcaption>
 </figure></li>
-<li>Care must be taken</li>
+<li>Download both Relase version and Debug version of LibTorch.</li>
+</ul>
+<hr />
+<h1 id="register-environment-variables">Register Environment Variables</h1>
+<ul>
+<li>For convenience of development environment of <code>PAR</code>, it's very useful to register environment variables for OpenCV and LibTorch.</li>
+<li>Open <code>Edit the system environment variables</code> on your Windows.
+<figure>
+  <img src="https://cognex-gs.github.io/assets/img/posts/setting-up-par-runtime-env/02.jpg" width="100%" />
+  <figcaption>System property window for environment variables</figcaption>
+</figure></li>
+<li>Register <code>LIBTORCH_1_6_0_CUDA_10_1_PATH</code> for LibTorch release version (Change CUDA toolkit version if necessary).<ul>
+<li>Variable name: <code>LIBTORCH_1_6_0_CUDA_10_1_PATH</code></li>
+<li>Variable value: <code>{PATH_TO_LIBTORCH}\libtorch-win-shared-with-deps-1.6.0+cu101\libtorch\</code></li>
+</ul>
+</li>
+<li>Register <code>LIBTORCH_1_6_0_CUDA_10_1_PATH</code> for LibTorch release version (Change CUDA toolkit version if necessary).<ul>
+<li>Variable name: <code>LIBTORCH_1_6_0_CUDA_10_1_PATH</code></li>
+<li>Variable value: <code>{PATH_TO_LIBTORCH}\libtorch-win-shared-with-deps-1.6.0+cu101\libtorch\</code></li>
+</ul>
+</li>
 </ul>
                 
               
