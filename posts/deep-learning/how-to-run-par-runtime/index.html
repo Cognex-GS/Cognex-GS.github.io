@@ -341,10 +341,94 @@
 </li>
 <li>
 <p>Dataset:</p>
+<ul>
+<li>OK dataset<ul>
+<li>목적: 샘플 단위 수율이 목표치 이내에 들도록 segmentation threshold 설정.</li>
+<li>경로: <code>NAS[10.99.160.32:5000]/Archive-Research/999_project/015_COI_rnd_tf/a102du-"black/red/white"/whole/ok-only-wild</code> 또는 연구팀에 요청.</li>
+</ul>
+</li>
+<li>NG dataset<ul>
+<li>목적: 위의 OK dataset을 활용해 얻은 threshold로 NG dataset을 처리하고, 이때 패치 단위 혹은 샘플 단위의 NG2OK(미검) 숫자를 고려하여 미검이 가장 적은 모델을 선정.</li>
+<li>경로: <code>NAS[10.99.160.32:5000]/Archive-Research/999_project/015_COI_rnd_tf/a102du-"black/red/white"/whole/ng-biased-wild</code> 또는 연구팀에 요청.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Argument settings
+<div class="highlight"><pre><span></span><code>--evalType 1
+--targetNumberOfPatchMin 50
+--targetNumberOfPatchMax 80
+--segThreshold 0.534375
+--probThresholdBegin 0.3
+--probThresholdEnd 0.7
+--pairSeparatorFirst &quot;d-off&quot;
+--pairSeparatorSecond &quot;d-on&quot;
+--inputFolder &quot;E:\999_project\015_COI_rnd_tf\a102du-black\whole\ok-only-wild\image/&quot;
+--maskFolder &quot;E:\999_project\015_COI_rnd_tf\a102du-black\whole\ok-only-wild\mask\non-ok.2class/&quot;
+--segModelPath &quot;E:\999_project\015_COI_rnd_tf\_research_result\a102du_side_seg_models\20201013/102du_black_side_seg_epoch92_resnet18_20201013.model&quot;
+--gpuIndex 0
+--patchSize 128
+--inputWidth 3520
+--inputHeight 512
+--inputChannel 6
+</code></pre></div></p>
+</li>
+</ul>
+<p>위와 같은 옵션을 갖는 경우, 아래와 같이 실행:</p>
+<div class="highlight"><pre><span></span><code>--evalType 1 --targetNumberOfPatchMin 50 --targetNumberOfPatchMax 80 --segThreshold 0.534375 --probThresholdBegin 0.3 --probThresholdEnd 0.7 --pairSeparatorFirst &quot;d-off&quot; --pairSeparatorSecond &quot;d-on&quot; --inputFolder &quot;E:\999_project\015_COI_rnd_tf\a102du-black\whole\ok-only-wild\image/&quot; --maskFolder &quot;E:\999_project\015_COI_rnd_tf\a102du-black\whole\ok-only-wild\mask\non-ok.2class/&quot; --segModelPath &quot;E:\999_project\015_COI_rnd_tf\_research_result\a102du_side_seg_models\20201013/102du_black_side_seg_epoch92_resnet18_20201013.model&quot; --gpuIndex 0 --patchSize 128 --inputWidth 3520 --inputHeight 512 --inputChannel 6
+</code></pre></div>
+
+<ul>
+<li>Results<ul>
+<li>결과 패치가 <code>ParRuntimeTest.exe/../outs/시간/</code> 에 저장됨.</li>
+<li>이 결과는 아래의 classification model을 평가하는데 반드시 필요.</li>
+</ul>
 </li>
 </ul>
 <hr />
 <h1 id="3-classification-model">3.    Classification model 평가 방법</h1>
+<ul>
+<li>
+<p>Model: <a href="https://cognexcorporation-my.sharepoint.com/:u:/g/personal/kiyoung_song_cognex_com/EcEdbj0oeolLubqJZbK1aXsBJdAbisghx6fb8_7Q8NkWBQ?e=5bbcKU">Link</a> or 연구팀에게 요청 or Woody님에게 요청.</p>
+</li>
+<li>
+<p>Dataset:</p>
+<ul>
+<li>OK dataset: 위의 <code>Segmentation model 실행 방법</code>을 참고하여 ok-only-wild 데이터셋을 처리하고 나온 결과물인 이미지의 폴더를 지정.</li>
+<li>NG dataset: 위의 <code>Segmentation model 실행 방법</code>을 참고하여 ng-biased-wild 데이터셋을 처리하고 나온 결과물인 이미지의 폴더를 지정.</li>
+</ul>
+</li>
+<li>
+<p>Argument settings
+<div class="highlight"><pre><span></span><code>--evalType 0
+--targetYieldMin 0.82
+--targetYieldMax 0.85
+--probThresholdBegin 0.2
+--probThresholdEnd 0.8
+--inputFolder &quot;&quot;
+--okInputImagePath &quot;E:\999_project\015_COI_rnd_tf\seg patch for cls\side\black\20201013\20201013_233934_a102du_side_black_patch_ok_only/&quot;
+--ngInputImagePath &quot;E:\999_project\015_COI_rnd_tf\seg patch for cls\side\black\20201013\20201013_232512_a102du_side_black_patch_ng_biased/&quot;
+--pairSeparatorFirst &quot;d-off&quot;
+--pairSeparatorSecond &quot;d-on&quot;
+--claModelPath &quot;E:\999_project\015_COI_rnd_tf\_research_result\20201013_side_cls_models\black_model/&quot;
+--claThreshold -1
+--gpuIndex 0
+--inputChannel 6
+</code></pre></div></p>
+</li>
+</ul>
+<p>위와 같은 옵션을 갖는 경우, 아래와 같이 실행:</p>
+<div class="highlight"><pre><span></span><code>--evalType 0 --targetYieldMin 0.82 --targetYieldMax 0.85 --probThresholdBegin 0.2 --probThresholdEnd 0.8 --inputFolder &quot;&quot; --okInputImagePath &quot;E:\999_project\015_COI_rnd_tf\seg patch for cls\side\black\20201013\20201013_233934_a102du_side_black_patch_ok_only/&quot; --ngInputImagePath &quot;E:\999_project\015_COI_rnd_tf\seg patch for cls\side\black\20201013\20201013_232512_a102du_side_black_patch_ng_biased/&quot; --pairSeparatorFirst &quot;d-off&quot; --pairSeparatorSecond &quot;d-on&quot; --claModelPath &quot;E:\999_project\015_COI_rnd_tf\_research_result\20201013_side_cls_models\black_model/&quot; --claThreshold -1 --gpuIndex 0 --inputChannel 6
+</code></pre></div>
+
+<ul>
+<li>Results: <code>outs</code> 폴더에 <code>cls_result.txt</code> 파일에 기록됨.
+<figure>
+  <img src="https://cognex-gs.github.io/assets/img/posts/how-to-run-par-runtime/01.png" width="100%" />
+  <figcaption>Classfication Results</figcaption>
+</figure></li>
+</ul>
                 
               
               
