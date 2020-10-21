@@ -18,7 +18,7 @@
     
     
       
-        <title>How to setup detectron2 on windows - COGNEX GSS Technical Blog</title>
+        <title>How to Set Up Detectron2 Development Environment on Windows - COGNEX GSS Technical Blog</title>
       
     
     
@@ -80,7 +80,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              How to setup detectron2 on windows
+              How to Set Up Detectron2 Development Environment on Windows
             
           </span>
         </div>
@@ -164,10 +164,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       Posts
@@ -185,10 +187,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" checked>
     
     <label class="md-nav__link" for="nav-2-1">
       Deep Learning
@@ -218,11 +222,20 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../../how-to-setup-detectron2-on-windows.md" title="How to Set Up Detectron2 Development Environment on Windows" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="How to Set Up Detectron2 Development Environment on Windows" class="md-nav__link md-nav__link--active">
       How to Set Up Detectron2 Development Environment on Windows
     </a>
+    
   </li>
 
         
@@ -291,7 +304,7 @@
                   
                 
                 
-                <p><em>Written by Alex Choi, Oct. 8, 2020.</em></p>
+                <p><em>Written by Alex Choi, Oct. 21, 2020.</em></p>
 <hr />
 <h1 id="basic-environment">Basic Environment</h1>
 <ul>
@@ -299,21 +312,19 @@
 <li><a href="https://www.python.org/downloads/release/python-378/">Python 3.7</a></li>
 </ul>
 <hr />
-<h1 id="option-1-using-python-virtual-environment">Option 1: Using Python Virtual Environment</h1>
+<h1 id="option-1-using-anaconda">Option 1: Using Anaconda</h1>
 <ul>
-<li>Create a Python virtual environment(whatever name you want):
-<div class="highlight"><pre><span></span><code>python -m venv detectron2
-</code></pre></div>
-.\python\Scripts\activate
-pip install torch==1.5.1+cu101 torchvision==0.6.1+cu101 -f https://download.pytorch.org/whl/torch_stable.html
+<li>Create conda environment named detectron2 (whatever you want)
+conda create -n detectron2 python=3.7
+conda activate detectron2
+pip install torch==1.6.0+cu101 torchvision==0.7.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
 pip install fvcore
 pip install pycocotools-windows
+(Move to somewhere to save detectron.git)
 git clone --depth 1 --branch v0.1.1 https://github.com/facebookresearch/detectron2.git
 cd detectron2
 pip install -U .</li>
 </ul>
-<hr />
-<h1 id="option-2-using-anaconda">Option 2: Using Anaconda</h1>
                 
               
               
@@ -328,6 +339,41 @@ pip install -U .</li>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../setting-up-pytorch-centernet-dev-env/" title="How to Set Up PyTorch CenterNet Development Environment" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                How to Set Up PyTorch CenterNet Development Environment
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../setting-up-par-runtime-env/" title="How to Set Up PAR Runtime Development Environment" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                How to Set Up PAR Runtime Development Environment
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
