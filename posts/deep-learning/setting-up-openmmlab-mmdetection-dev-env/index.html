@@ -338,16 +338,81 @@
 <li><a href="https://www.python.org/downloads/release/python-378/">Python 3.7</a></li>
 </ul>
 <hr />
-<h1 id="create-conda-environment-and-activate-it">Create conda environment and activate it</h1>
+<h1 id="create-conda-environment-and-activate-it">Create conda Environment and Activate It</h1>
 <ul>
-<li>Create conda environment named <code>open-mmlab</code> with python 3.7.
+<li>
+<p>Create conda environment named <code>open-mmlab</code> with python 3.7.
 <div class="highlight"><pre><span></span><code>conda create -n open-mmlab python=3.7 -y
 </code></pre></div>
 <figure>
   <img src="https://cognex-gs.github.io/assets/img/posts/setting-up-openmmlab-mmdetection-dev-env/01.jpg" width="100%" />
   <figcaption>FIG 1. Creating open-mmlab conda environment</figcaption>
+</figure></p>
+</li>
+<li>
+<p>Activate <code>open-mmlab</code> conda Environment
+<div class="highlight"><pre><span></span><code>conda activate open-mmlab
+</code></pre></div>
+<figure>
+  <img src="https://cognex-gs.github.io/assets/img/posts/setting-up-openmmlab-mmdetection-dev-env/02.jpg" width="100%" />
+  <figcaption>FIG 2. Activating open-mmlab conda environment</figcaption>
+</figure></p>
+</li>
+</ul>
+<hr />
+<h1 id="install-pytorch-torchvision-with-cudatoolkit-option">Install PyTorch &amp; TorchVision with CudaToolkit option</h1>
+<p><div class="highlight"><pre><span></span><code>conda install pytorch=1.6.0 torchvision cudatoolkit=10.1 -c pytorch
+</code></pre></div>
+<figure>
+  <img src="https://cognex-gs.github.io/assets/img/posts/setting-up-openmmlab-mmdetection-dev-env/03.jpg" width="100%" />
+  <figcaption>FIG 3. Installing PyTorch &amp; TorchVision</figcaption>
+</figure></p>
+<hr />
+<h1 id="install-mmcv">Install <a href="https://github.com/open-mmlab/mmcv">mmcv</a></h1>
+<p><div class="highlight"><pre><span></span><code>python -m pip install mmcv-full==latest+torch1.6.0+cu101 -f https://download.openmmlab.com/mmcv/dist/index.html
+</code></pre></div>
+<figure>
+  <img src="https://cognex-gs.github.io/assets/img/posts/setting-up-openmmlab-mmdetection-dev-env/04.jpg" width="100%" />
+  <figcaption>FIG 4. Installing MMCV</figcaption>
+</figure></p>
+<hr />
+<h1 id="clone-mmdetection-github-repository">Clone MMDetection Github Repository</h1>
+<ul>
+<li>Clone MMDetection Github repository to any path that you want.
+<div class="highlight"><pre><span></span><code>git clone https://github.com/open-mmlab/mmdetection.git
+</code></pre></div>
+<figure>
+  <img src="https://cognex-gs.github.io/assets/img/posts/setting-up-openmmlab-mmdetection-dev-env/05.jpg" width="100%" />
+  <figcaption>FIG 5. Cloing MMDetection Github repository</figcaption>
 </figure></li>
 </ul>
+<hr />
+<h1 id="install-requirements-for-build">Install requirements for Build</h1>
+<ul>
+<li>Before installing requirements, move to the path of your MMDetection repository cloned
+<div class="highlight"><pre><span></span><code>cd mmdetection
+</code></pre></div></li>
+<li>Install requirements for build with the following command line:
+<div class="highlight"><pre><span></span><code>pip install -r requirements/build.txt
+</code></pre></div>
+<figure>
+  <img src="https://cognex-gs.github.io/assets/img/posts/setting-up-openmmlab-mmdetection-dev-env/06.jpg" width="100%" />
+  <figcaption>FIG 6. Installing requirements for build</figcaption>
+</figure></li>
+</ul>
+<hr />
+<h1 id="set-up-mmdetection-development-environment">Set up MMDetection Development Environment</h1>
+<div class="highlight"><pre><span></span><code>pip install -v -e .
+</code></pre></div>
+
+<p>or</p>
+<p><div class="highlight"><pre><span></span><code>python setup.py develop
+</code></pre></div>
+<figure>
+  <img src="https://cognex-gs.github.io/assets/img/posts/setting-up-openmmlab-mmdetection-dev-env/07.jpg" width="100%" />
+  <figcaption>FIG 7. Setting up MMDetection Development Environment</figcaption>
+</figure></p>
+<p>If you see no error message while building, then it succeeded!</p>
                 
               
               
